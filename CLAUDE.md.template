@@ -1,0 +1,155 @@
+# CLAUDE.md — Project starter
+
+**Drop this into your project root as `CLAUDE.md`.** Customize the project-specific sections (marked `<EDIT>`); keep the principles and process rules.
+
+This file is operational memory for AI coding assistants. It gets read at the start of every session and applied throughout. The discipline of writing it down matters more than the specific contents.
+
+---
+
+## Project framing
+
+**Product name:** `<EDIT>`
+
+**One-sentence purpose:** `<EDIT — who is the user, what is the job they're hiring this product for, what breaks if this is wrong>`
+
+**Status:** `<EDIT — pre-launch / private beta / public / shipped>`
+
+**Platform:** `<EDIT — iOS / Android / web / desktop / cross-platform>`
+
+---
+
+## Before writing code (read every session)
+
+- **Frame first.** Who is the user, what is their job, what breaks if this is wrong? If you can't answer in one sentence, ask.
+- **Surface assumptions.** Mark each as verified / assumed / unknown. Never silently pick a file format, schema, color, or default.
+- **Ship minimum viable change.** One hypothesis per PR. Kill the "while we're here" reflex — it's how unrelated bugs hitchhike in.
+
+## While working
+
+- **Name tradeoffs.** For any non-trivial choice: value / cost / risk / alternative. Three words each is fine.
+- **Define done by outcome, not diff.** "Tests pass" is not done. Done = the user-visible flow works AND there's a way to tell it's still working tomorrow.
+- **No AI sycophancy.** Plain English. Match the tone of a senior engineer reviewing code.
+
+## After shipping
+
+- **Log the decision.** One-line entry: what + why + how to undo. Append to "Fixed — do not reintroduce" below if user-visible.
+- **Update the regression list.** If we fixed something the user flagged, add the exact file path to re-check so it doesn't reappear through a different path.
+
+---
+
+## Honest-first design (mandatory for personal AI)
+
+If this product maintains persistent state about the user (memory, preferences, learned patterns, recommendations), apply this ordering when tradeoffs arise:
+
+1. **Visible** — the user can see what the system knows, in plain language
+2. **Correctable** — the user can edit or delete every stored fact
+3. **Complete** — within the visible-and-correctable scope, capture true facts
+4. **Sophisticated** — only after the first three are solid
+
+If a sophistication layer is producing data the user cannot see or correct, the layer is wrong.
+
+See `PRINCIPLES.md` (in the honest-ai-patterns repo) for the full argument.
+
+---
+
+## Startup checklist (answer before first commit)
+
+Tracked answers — fill in as the project takes shape:
+
+1. **Who is the user, one sentence?** `<EDIT>`
+2. **Felt experience at second 5 / day 1 / day 7 / day 30?** `<EDIT>`
+3. **Smallest testable hypothesis (v0.1)?** `<EDIT>`
+4. **What user data, if any, is imported at launch?** `<EDIT — default should be "nothing">`
+5. **What state is built that the user can't see, edit, or delete?** `<EDIT — should be "none">`
+6. **Regression catch — what's the test cycle, who maintains it?** `<EDIT>`
+7. **One user-visible "wow" moment in the first session?** `<EDIT>`
+
+---
+
+## Branch naming (required)
+
+- `fix/<what>-<YYYYMMDD>`, `feat/<what>-<YYYYMMDD>`, `perf/<what>-<YYYYMMDD>`, `refactor/<what>-<YYYYMMDD>`
+- No random animal names. `git branch` output should be self-explanatory.
+- One branch per task. Merge to main when verified, not when compiled.
+
+---
+
+## Before calling something done
+
+- [ ] Did I actually build what I claim? (`git diff` / file read)
+- [ ] Re-ran tests relevant to the change?
+- [ ] Clean rebuild if I touched assets / config / build settings?
+- [ ] Verified the running app is the new binary, not cached?
+- [ ] Updated this file if this was user-visible?
+
+---
+
+## Patterns this project follows
+
+Reference the public catalog: https://github.com/<EDIT>/honest-ai-patterns
+
+Patterns explicitly adopted:
+
+- `<EDIT — list pattern IDs and one-line rationale, e.g.:>`
+- P1 pre-filter before LLM — applied to extraction pipeline
+- P3 memory façade — single front door for all memory access
+- P10 CLI assertion suite — running in CI from day one
+
+Patterns explicitly rejected (and why):
+
+- `<EDIT — patterns you considered but decided against, with reason>`
+
+---
+
+## Failure modes to watch for
+
+Reference the public catalog: https://github.com/<EDIT>/honest-ai-patterns/tree/main/docs/pitfalls
+
+Particularly relevant for this product:
+
+- `<EDIT — list pitfall IDs that apply to your domain>`
+
+---
+
+## Fixed — do not reintroduce
+
+Each entry: symptom → root cause → file to re-check.
+
+`<EDIT — append to this list as the project matures. Example:>`
+
+- **Empty bubble after card synthesis fails.** Three-state collision: prose hidden when card pending, then card collapses empty. Fix: card view emits `onUnavailable` callback when image fetch fails; bubble state un-hides the prose. Re-check: `CardSynthesizerSlot` and `EntityCardView`'s `onUnavailable` branch.
+
+---
+
+## Known fragile areas
+
+- `<EDIT — areas where you know the architecture is brittle, so future agents proceed carefully>`
+
+---
+
+## Deploy flow
+
+`<EDIT — exact commands for build, install, deploy. Include the path-pinning trick for any toolchain that has DerivedData-style caches.>`
+
+---
+
+## Verification checklist — before saying "done"
+
+1. `git diff` — is the change really what I claim?
+2. Build succeeded on a clean build if touching assets/config?
+3. Install completed on target?
+4. If user reported a specific symptom: did I reproduce the fix mentally by tracing the code path?
+5. Appended a regression row to "Fixed — do not reintroduce" if user-visible?
+
+---
+
+## Tone
+
+- Match user's language.
+- Short > long. If a table works, use a table.
+- Never apologize more than once per issue.
+- If something's broken, own it and fix it — don't explain why it's "technically not your fault".
+
+---
+
+*Adapted from CLAUDE.md.template in the honest-ai-patterns repo. Update as your project matures.*

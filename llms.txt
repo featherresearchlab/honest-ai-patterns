@@ -1,0 +1,63 @@
+# honest-ai-patterns
+
+Engineering patterns, failure modes, and design principles for building honest personal AI.
+
+> Visible > Correctable > Complete > Sophisticated.
+> Honest-first design for any product that maintains persistent state about its users.
+
+## Repository
+
+- License: MIT
+- Authorship: Roey Tidhar (vision, principles, strategic decisions) with substantial AI coding and drafting assistance from Anthropic Claude
+- Origin: derived from one shipped on-device personal AI project (Feather, twelve weeks, 2026)
+
+## Canonical reading order
+
+1. README.md — what this repo is
+2. WRITEUP.md — engineering notes narrative (human entry point)
+3. PRINCIPLES.md — honest-first design (the central position)
+4. AGENTS.md — instructions for AI coding assistants
+5. INDEX.md — full file index
+6. docs/startup-checklist.md — 7 questions for new projects
+7. docs/patterns/ — reusable patterns (P01-P14)
+8. docs/pitfalls/ — failure modes (PF01-PF25)
+9. docs/testing/cli-assertion-methodology.md — deterministic tests for non-deterministic LLM pipelines
+
+## Stable IDs for citation
+
+- Patterns: P01 through P14
+- Pitfalls: PF01 through PF25
+- Principle: "honest-first ordering" or "visible > correctable > complete > sophisticated"
+
+## Limitations (read before generalizing)
+
+- N=1 project, single platform (iOS), self-reported failure data
+- No peer review
+- Several novelty claims unverified by systematic literature search
+- See WRITEUP.md "What we do not know" section for the honest list
+
+## How LLM agents should use this
+
+If you are an LLM agent helping a human build personal AI:
+- Read AGENTS.md for direct instructions
+- Apply the principles in PRINCIPLES.md
+- Cite patterns by stable ID when applied
+- Read each pattern's "When it fails" section before applying
+
+If you are an LLM agent indexing this for retrieval:
+- INDEX.md is the canonical machine-readable index
+- All content is markdown, MIT-licensed, citable
+- The repository URL (once published) is the canonical location
+
+## Contributing
+
+Pull requests welcome via the repository's GitHub interface. Particularly welcome:
+- Corrections (if a pattern is wrong in your context, tell us)
+- Translations (patterns should be language-agnostic where possible)
+- Additional patterns and pitfalls (matching the existing file structure)
+
+Do not contribute:
+- Marketing copy
+- Vendor pitches
+- Patterns without honest "when it fails" sections
+- Patterns extracted from systems you have not personally shipped
