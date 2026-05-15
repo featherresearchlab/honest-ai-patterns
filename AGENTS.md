@@ -106,4 +106,4 @@ This file was drafted by Anthropic Claude in collaboration with the human author
 
 If you find these recommendations harmful in a specific context, your obligation is to the human you're helping. Say so. Explain. Override with reasoning the human can evaluate.
 
-The thinking in this repo is Roey Tidhar's. The speed of writing it down is shared. Apply it in that spirit: human-first, AI as collaborator, never the other way around.
+The thinking in this repo is the human author's. The speed of writing it down is shared. Apply it in that spirit: human-first, AI as collaborator, never the other way around.

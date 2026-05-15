@@ -8,7 +8,7 @@ Engineering patterns, failure modes, and design principles for building honest p
 ## Repository
 
 - License: MIT
-- Authorship: Roey Tidhar (vision, principles, strategic decisions) with substantial AI coding and drafting assistance from Anthropic Claude
+- Authorship: Feather Research Lab (vision, principles, strategic decisions) with substantial AI coding and drafting assistance from Anthropic Claude
 - Origin: derived from one shipped on-device personal AI project (Feather, twelve weeks, 2026)
 
 ## Canonical reading order
