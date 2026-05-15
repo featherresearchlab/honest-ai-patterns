@@ -31,6 +31,8 @@ Convert to dollars using your team's hourly rate. We won't quote a single number
 
 The honest upper bound: **the twelve weeks we spent learning these the hard way.** If everything here applies to your project, that's the amount of time you don't have to spend.
 
+For the full measurement methodology and reproducible commands you can run on your own codebase, see [VALIDATION.md](./VALIDATION.md).
+
 ---
 
 ## Why this exists
