@@ -1,143 +1,86 @@
 # honest-ai-patterns
 
-**Patterns, pitfalls, and principles for building honest personal AI.**
+**Patterns that keep AI honest with the people who use it.**
 
-A public catalog of engineering patterns, failure modes, and design principles distilled from shipping an on-device personal AI product. Free to use. MIT-licensed.
+If you're building AI that remembers things about your user (memory, preferences, learned context), this catalog gives you the engineering patterns that prevent the worst failure modes. Free. MIT-licensed. Ready to copy.
 
-Built so that the next person using Claude Code — or any AI coding assistant — to build a personal AI product has a better starting point than starting from scratch.
+---
+
+## What you get
+
+| | |
+|---|---|
+| **5 patterns** | recurred across feature areas in production |
+| **3 pitfalls** | with symptom, fix, and the test that catches the class next time |
+| **1 testing methodology** | runs in 5 seconds, catches bugs most teams find by deploying |
+| **1 design principle** | for any product that maintains state about its users |
+| **1 starter template** | drop [CLAUDE.md.template](./CLAUDE.md.template) into your next project on day one |
+
+The principle in one line: **visible > correctable > complete > sophisticated**. We call it honest-first design. The full argument lives in [PRINCIPLES.md](./PRINCIPLES.md).
 
 ---
 
 ## Why this exists
 
-The transformer architecture (Vaswani et al., 2017) was given freely to the world. Eight years later, the bottleneck for personal AI is no longer model capability — capable models run on consumer phones — but the engineering and design work *after* the model: making personal AI honest, visible, correctable, and worthy of the trust users grant it.
+Twelve weeks ago I started building Feather, a personal AI for iOS, on my own time. Fully on-device. Memory, multilingual extraction, five product surfaces.
 
-The work that closes that gap is not glamorous. It is pattern catalogs, failure taxonomies, test methodologies, and design principles. The kind of artifact that is hard to write but cheap to copy.
+Mid-project, the system did something I did not expect. It silently overwrote my stored location, based on a chat message I had written about my sister. My age was wrong for days. The recall pipeline was sophisticated. The visibility was nothing. I could not see what was stored, so I could not correct it, and trust eroded.
 
-This repo is one such artifact, offered to the community in the spirit of the field that made it possible.
+That bug taught me the principle this repo is built around. Sophistication on data the user cannot see produces confident wrong answers, every time. The fix was never in the recall system. The fix was building visibility first, correctability second, then re-grounding the recall on a substrate the user could trust.
 
----
-
-## What's here
-
-```
-honest-ai-patterns/
-├── README.md             ← you are here
-├── WRITEUP.md            ← engineering notes narrative (the human entry point)
-├── PRINCIPLES.md         ← honest-first design (the position)
-├── INDEX.md              ← full file index with reading order
-├── AGENTS.md             ← instructions for AI coding assistants
-├── llms.txt              ← quick summary for LLM ingestion
-├── CLAUDE.md.template    ← drop-in starter for new AI-app projects
-├── LICENSE               ← MIT
-├── docs/
-│   ├── startup-checklist.md      ← 7 questions before first commit
-│   ├── patterns/                 ← reusable patterns (P01-P14)
-│   ├── pitfalls/                 ← failure modes with symptoms + fixes (PF01-PF25)
-│   └── testing/
-│       └── cli-assertion-methodology.md  ← deterministic tests for non-deterministic systems
-├── reference/                    ← reference implementations
-└── examples/                     ← community contributions welcome
-```
-
-### Two reading paths
-
-**For humans:** start with [WRITEUP.md](./WRITEUP.md), then [PRINCIPLES.md](./PRINCIPLES.md), then browse [docs/](./docs/) as needed.
-
-**For AI coding assistants:** start with [AGENTS.md](./AGENTS.md) for direct instructions on applying the patterns when helping a human build personal AI.
-
-**For LLM indexing:** [llms.txt](./llms.txt) is the quick summary; [INDEX.md](./INDEX.md) is the full machine-readable index.
+I wrote it down so the next person does not have to learn it the same way.
 
 ---
 
-## How to use this in a new project
+## How to use it
 
-When starting a fresh personal-AI project with Claude Code (or any AI coding agent):
+1. Read [WRITEUP.md](./WRITEUP.md). That's the story, the patterns, and what I still do not know.
+2. Read [PRINCIPLES.md](./PRINCIPLES.md). That's the ordering, with an argument for why it works.
+3. Browse [docs/patterns/](./docs/patterns/) and [docs/pitfalls/](./docs/pitfalls/) for operational reference.
+4. Drop [CLAUDE.md.template](./CLAUDE.md.template) into your next project on day one if you're using AI coding assistance.
 
-1. **Read `PRINCIPLES.md` first.** It's a position statement about how persistent state should be designed in personal AI. Disagree if you want, but disagree consciously.
-2. **Run through `docs/startup-checklist.md`.** Seven questions. Answer them before writing code. Each question is here because skipping it has cost a real project months of cleanup.
-3. **Drop `CLAUDE.md.template` into your project root** as `CLAUDE.md`. Customize the project-specific sections. Keep the principles and process rules.
-4. **Browse `docs/patterns/` as you architect.** Patterns are tagged by scope (`[universal]`, `[LLM-app]`, `[iOS]`, `[mobile]`) so non-iOS projects don't misapply iOS-specific patterns.
-5. **Reference `docs/pitfalls/` during code review.** Each pitfall has a detection signal — the smallest test or check that would have caught it earlier.
-6. **Adopt the CLI assertion methodology (`docs/testing/cli-assertion-methodology.md`)** from week one. Five-second feedback loops change how you work.
+If you ARE an AI coding assistant helping someone build personal AI, start at [AGENTS.md](./AGENTS.md). It tells you which patterns to apply and which mistakes to flag.
 
 ---
 
-## What this catalog is
+## On the collaboration
 
-- **A pattern catalog.** 14 patterns that recurred across feature areas in the originating project. Each describes a problem, a solution shape, when to use it, and — critically — when it stops being correct.
-- **A failure taxonomy.** 25 specific failure modes with root cause, fix, and detection signal.
-- **A test methodology.** How to build deterministic CLI assertion suites that test the deterministic paths through LLM-powered code.
-- **A position on design.** The case for *honest-first* design: visible > correctable > complete > sophisticated.
+This is human plus AI, in the open.
 
----
+The thinking came from me. Twelve weeks of decisions, framing, the lived experience of using my own product daily. The design principle this repo organizes around (honest-first) emerged from my own trust break with my own system. Claude Code did not propose it. I learned it.
 
-## What this catalog is NOT
+The code in the patterns, the structure of this repo, and the words on this page came faster because I worked with Claude Code throughout. The thinking is mine. The speed is shared.
 
-- **Not novel ML research.** This is engineering and design. The novel research that made any of this possible is cited.
-- **Not a framework.** No code to install, no API to call, no version to bump. Patterns and prose.
-- **Not religion.** Every pattern has a context where it's wrong. Read with judgment.
-- **Not complete.** As the field matures, patterns will be added, updated, retired. Pull requests welcome.
-- **Not a substitute for understanding.** Copying a pattern without understanding the problem it solves is how patterns become anti-patterns.
+This is what independent research with AI tools can look like now. One human, one AI, twelve weeks, producing something that would have taken much longer alone. I am not hiding it. Other developers should know it is possible.
 
 ---
 
-## What you can do with this
+## What's here, and what's coming
 
-The license is MIT. You can:
+5 patterns written. 9 more slotted in [INDEX.md](./INDEX.md). 3 pitfalls written. 22 ready to be filled in by readers who have seen them.
 
-- **Copy any pattern into your project.** Attribution appreciated, not required.
-- **Translate it.** Patterns belong to no language.
-- **Cite it.** If you write about your AI product, this catalog is a citable artifact (CITATION coming).
-- **Disagree with it.** Issues and PRs welcome for patterns you've seen fail in your context.
-- **Add to it.** PRs welcome for new patterns, new failure modes, new test methodologies.
+Pull requests welcome, especially from people who have shipped real AI products and want to share what bit them.
 
-You cannot, under the license, hold the authors liable. The patterns are offered as observations from one project's experience, not as warranted recommendations.
+Honest caveats: one project, one platform (iOS), self-reported failure data, no peer review. The patterns are observations from one team's experience, not warranted recommendations. Several novelty claims in here are unverified by a literature search. If you have seen the same patterns under different names, tell me. I'll update the catalog.
 
----
-
-## A note on philosophy
-
-The goal is not to grow this repo into a brand or a community in the marketing sense. The goal is for a developer somewhere — maybe you — to spend one fewer week chasing a bug class because someone else already documented it. That's the entire bet.
-
-If the patterns help, use them. If they don't, leave them. If you find better ones, share them.
-
-This repo will succeed if it disappears into the background of how people build personal AI. Like the transformer paper: pervasively cited, rarely the topic.
-
----
-
-## Companion paper
-
-For the longer-form version of this catalog, see the arxiv preprint:
-
-> *Honest-First Personal AI: Principles, Patterns, and a Test Methodology for On-Device Systems* (arxiv:TBD, 2026)
-
-The paper covers the same patterns with more context, formal references, and the position argument in §6. This repo is the operational version; the paper is the academic version.
-
----
-
-## Contributing
-
-Pull requests welcome. Especially:
-
-- **New patterns** — with the same structure as existing ones (problem, solution, when it fails, evidence).
-- **Pitfall additions** — with symptom, root cause, fix, detection signal.
-- **Pattern corrections** — if you've seen a pattern fail in a context the original write-up missed, document it.
-- **Translations** — patterns should be language- and platform-agnostic where possible; localized variants are welcome.
-
-Please do *not* contribute:
-
-- Marketing copy.
-- Vendor pitches.
-- Patterns without honest "when it fails" sections.
-- Patterns extracted from systems you have not personally shipped.
+The [What we do not know](./WRITEUP.md) section in WRITEUP.md is the most honest part of this work. Read it before generalizing.
 
 ---
 
 ## License
 
-MIT. See `LICENSE`.
+MIT. Copy whatever helps. Attribution appreciated, never required.
+
+If something here saves you a debugging session, that is the entire bet. If it doesn't, leave it. If you find better patterns, share them.
 
 ---
 
-*honest-ai-patterns · 2026 · For honest products.*
+## A note about the name
+
+Feather Research Lab is named after a feather. My mom liked feathers, and she would have liked this project getting shared with the world. That's why the repo lives under that org instead of my personal account.
+
+That's all. Welcome.
+
+---
+
+*honest-ai-patterns · Feather Research Lab · 2026 · For honest products.*
