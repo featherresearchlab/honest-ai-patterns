@@ -14,6 +14,25 @@ Free. MIT-licensed. Ready to copy. Full argument for the principle lives in [PRI
 
 ---
 
+## What this saves you (the numbers we tracked)
+
+Specific measurements from one project. Not guarantees. Your savings depend on which patterns you adopt and what you're building.
+
+| Pattern | What it saved us |
+|---|---|
+| **CLI assertion suite** | 5 seconds per bug iteration vs 2-15 minutes for device redeploy. For an LLM-app team running 20+ iterations a week, that's hours per week of pure cycle time. |
+| **Defer-unload for in-flight resources** | 6 SIGSEGV crashes prevented over 12 weeks. Each crash in production is ~½ day of debugging, plus trust damage. |
+| **First-person disclosure guard** | Zero user-self attribute overwrites across 3,200 logged extractions after we shipped it. The bug class had shipped undetected for weeks before external review caught it. |
+| **Word-boundary tokenization** | Caught a migration that would have hard-deleted real users named Edward, Howard, Stewart (all contain "war"). Recovery from accidental user-data deletion: incalculable. |
+| **Memory façade** | Migrated the entity store from hash-map prototype to SwiftData with CloudKit sync. Zero call sites changed. Without the façade pattern, the same migration touches most of the codebase. |
+| **v1/v2 versioned migrations** | 3 destructive migrations retried safely. Without the pattern, retries compound bugs and often require manual data recovery. |
+
+Convert to dollars using your team's hourly rate. We won't quote a single number because the savings depend on your context: how often the bug class would have occurred, how much your engineers cost, how much user trust is worth to your product.
+
+The honest upper bound: **the twelve weeks we spent learning these the hard way.** If everything here applies to your project, that's the amount of time you don't have to spend.
+
+---
+
 ## Why this exists
 
 We spent twelve weeks building Feather, a personal AI for iOS. Fully on-device. Memory, multilingual extraction, five product surfaces.
