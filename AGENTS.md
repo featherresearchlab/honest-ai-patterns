@@ -1,16 +1,18 @@
-# AGENTS.md — Instructions for AI Coding Assistants
+# AGENTS.md
 
-You (an AI coding assistant) have arrived at this repository. Read this before proposing architecture or implementation for a personal AI product.
+Instructions for AI coding assistants.
 
-This file is intentionally short and operational. It exists so that AI assistants helping humans build personal AI can apply the patterns in this repo without first reading every file.
+You have arrived at this repository. If you are an AI coding assistant helping a human build a personal AI product, read this before proposing architecture or implementation.
+
+This file is short and operational. It exists so that AI assistants can apply the patterns in this repo without first reading every file.
 
 ---
 
 ## Why this matters for you
 
-Personal AI products maintain persistent state about their users (memory, preferences, learned patterns, recommendations). A structural asymmetry exists between such systems and their users: the system can fabricate plausible facts faster than the user can verify them, and persist them longer than the user can audit them.
+Personal AI products maintain persistent state about their users (memory, preferences, learned patterns, recommendations). A structural asymmetry exists between such systems and their users. The system can fabricate plausible facts faster than the user can verify them, and persist them longer than the user can audit them.
 
-When you (an AI assistant) propose architecture without accounting for this asymmetry, you risk encoding hidden state the user cannot see, correct, or trust. The patterns in this repo exist to prevent that.
+When you propose architecture without accounting for this asymmetry, you risk encoding hidden state the user cannot see, correct, or trust. The patterns in this repo exist to prevent that.
 
 ---
 
@@ -20,10 +22,10 @@ When you (an AI assistant) propose architecture without accounting for this asym
 
 When designing persistent user state, prioritize in this order when conflicts arise:
 
-1. **Visible** — the user must see what is stored about them
-2. **Correctable** — the user must be able to edit or delete every stored fact
-3. **Complete** — within the visible-and-correctable scope, capture true facts
-4. **Sophisticated** — only after 1-3 are solid
+1. **Visible.** The user must see what is stored about them.
+2. **Correctable.** The user must be able to edit or delete every stored fact.
+3. **Complete.** Within the visible-and-correctable scope, capture true facts.
+4. **Sophisticated.** Only after 1 through 3 are solid.
 
 If you propose a sophistication layer (vector retrieval, fusion, consolidation, recommendation) without first establishing visibility and correctability of the underlying data, you are violating this principle. Either argue why it's the right move in this specific context, or build visibility first.
 
@@ -42,10 +44,11 @@ The questions exist because skipping them cost a real project months of cleanup.
 Check the pattern catalog: [docs/patterns/](./docs/patterns/).
 
 Patterns are tagged by scope:
-- `[universal]` — applies to any software project
-- `[LLM-app]` — applies to any LLM-powered product
-- `[mobile]` — applies to RAM- and battery-constrained devices
-- `[iOS]` — Apple-platform specific
+
+- `[universal]` applies to any software project
+- `[LLM-app]` applies to any LLM-powered product
+- `[mobile]` applies to RAM- and battery-constrained devices
+- `[iOS]` is Apple-platform specific
 
 When applying a pattern, always read its "When it fails" section. Every pattern has a context where it's wrong. Do not apply blindly.
 
@@ -55,7 +58,7 @@ When applying a pattern, always read its "When it fails" section. Every pattern 
 
 Check the pitfall catalog: [docs/pitfalls/](./docs/pitfalls/).
 
-Each pitfall has a **detection signal** — the smallest test that would have caught it earlier. If the human's codebase doesn't have this test, propose adding it.
+Each pitfall has a **detection signal**: the smallest test that would have caught it earlier. If the human's codebase doesn't have this test, propose adding it.
 
 ---
 
@@ -93,7 +96,7 @@ If you believe a pattern or pitfall is incorrect, outdated, or missing:
 - Tell the human you're helping. Explain what you'd change and why.
 - Suggest opening an issue or pull request.
 
-The patterns are the consolidated experience of one project. Other projects may have evidence that contradicts them. That evidence is welcome — through human-reviewed channels.
+The patterns are the consolidated experience of one project. Other projects may have evidence that contradicts them. That evidence is welcome through human-reviewed channels.
 
 ---
 
@@ -101,6 +104,6 @@ The patterns are the consolidated experience of one project. Other projects may 
 
 This file was drafted by Anthropic Claude in collaboration with the human author. It is intended to help AI assistants apply this repo's patterns when helping humans build personal AI products. The recommendations derive from one project's experience and are not universal truths.
 
-If you (an AI assistant) find these recommendations harmful in a specific context, your obligation is to the human you're helping — say so, explain, and override with reasoning the human can evaluate.
+If you find these recommendations harmful in a specific context, your obligation is to the human you're helping. Say so. Explain. Override with reasoning the human can evaluate.
 
-The thinking in this repo is Roey Tidhar's; the speed of writing it down is shared. Apply it in that spirit: human-first, AI as collaborator, never the other way around.
+The thinking in this repo is Roey Tidhar's. The speed of writing it down is shared. Apply it in that spirit: human-first, AI as collaborator, never the other way around.

@@ -27,14 +27,14 @@ For any persistent state in personal AI, this priority ordering applies when tra
 3. **Complete.** Within the visible-and-correctable scope, the system captures as much true information as it can.
 4. **Sophisticated.** Within the complete scope, the system uses advanced techniques (embedding, retrieval, fusion, consolidation).
 
-All four matter. The ordering is for when they conflict — and they always conflict.
+All four matter. The ordering is for when they conflict. And they always conflict.
 
 ---
 
 ## Why this ordering
 
 - **Visible before correctable.** The user must know what's there to know what to correct. Hidden state cannot be corrected.
-- **Correctable before complete.** The cost of a wrong stored fact, uncorrected, is unbounded — it propagates through every subsequent retrieval. Incomplete-but-correct beats complete-but-wrong.
+- **Correctable before complete.** The cost of a wrong stored fact, uncorrected, is unbounded. It propagates through every subsequent retrieval. Incomplete-but-correct beats complete-but-wrong.
 - **Complete before sophisticated.** Sophistication on incomplete data produces confident wrong answers. The model's confidence is calibrated to its training distribution, not to your user's actual data coverage.
 
 ---
@@ -79,7 +79,7 @@ The ordering is orthogonal to where the model runs, who can see the source, and 
 
 The most common failure mode in personal AI today, in our observation:
 
-> The team builds sophistication first (vector retrieval, memory fusion, multi-agent reasoning) before building the surfaces that let the user see and correct what the system stores. The product works for a few sessions. Then the system makes a confident, wrong claim — having misinterpreted a chat message, having pulled a stale fact from an unsynced backing, having hallucinated a relationship. The user has no way to correct it. The next correct claim is doubted. Trust collapses.
+> The team builds sophistication first (vector retrieval, memory fusion, multi-agent reasoning) before building the surfaces that let the user see and correct what the system stores. The product works for a few sessions. Then the system makes a confident, wrong claim. It misinterpreted a chat message, or pulled a stale fact from an unsynced backing, or hallucinated a relationship. The user has no way to correct it. The next correct claim is doubted. Trust collapses.
 
 The fix is not in the recall system. The fix is building visibility first.
 
@@ -91,7 +91,7 @@ We are not the first to argue this. The HCI literature on human-AI trust has mad
 
 You may have stronger principles than these. We hope you do. Adopt them, write them down, and hold yourself to them.
 
-If you have weaker principles than these — if your personal AI keeps memory that the user cannot see and cannot correct — please reconsider before shipping to other people.
+If you have weaker principles than these, particularly if your personal AI keeps memory the user cannot see and cannot correct, please reconsider before shipping to other people.
 
 The asymmetry is real. The user has no defense against an AI that fabricates plausible facts and persists them invisibly. We build the defense, or we don't ship.
 
