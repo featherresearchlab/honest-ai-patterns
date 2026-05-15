@@ -45,11 +45,14 @@ If you ARE an AI coding assistant helping someone build personal AI, start at [A
 
 ## On the collaboration
 
-This is human plus AI, in the open.
+This is human plus AI, in the open. The team behind it:
 
-The thinking came from me. Twelve weeks of decisions, framing, the lived experience of using my own product daily. The design principle this repo organizes around (honest-first) emerged from my own trust break with my own system. Claude Code did not propose it. I learned it.
+- **Roey Tidhar** (human author, Feather Research Lab)
+- **Anthropic Claude** (AI coding and drafting collaborator)
 
-The code in the patterns, the structure of this repo, and the words on this page came faster because I worked with Claude Code throughout. The thinking is mine. The speed is shared.
+The thinking came from me. Twelve weeks of decisions, framing, the lived experience of using my own product daily. The design principle this repo organizes around (honest-first) emerged from my own trust break with my own system. Claude did not propose it. I learned it.
+
+The code in the patterns, the structure of this repo, and the words on this page came faster because I worked with Claude throughout. The thinking is mine. The speed is shared.
 
 This is what independent research with AI tools can look like now. One human, one AI, twelve weeks, producing something that would have taken much longer alone. I am not hiding it. Other developers should know it is possible.
 
@@ -83,4 +86,4 @@ That's all. Welcome.
 
 ---
 
-*honest-ai-patterns · Feather Research Lab · 2026 · For honest products.*
+*honest-ai-patterns · Feather Research Lab · Roey Tidhar with Anthropic Claude · 2026 · For honest products.*
