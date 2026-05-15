@@ -2,21 +2,15 @@
 
 **Patterns that keep AI honest with the people who use it.**
 
-If you're building AI that remembers things about your user (memory, preferences, learned context), this catalog gives you the engineering patterns that prevent the worst failure modes. Free. MIT-licensed. Ready to copy.
+**Save weeks. Ship AI users trust.** A catalog of patterns, failure modes, and a design principle for any product that maintains state about its users. Distilled from twelve weeks of shipping personal AI on-device.
 
----
+→ **5 patterns** that prevented real production failures
+→ **3 bugs** with symptom, fix, and the test that catches them next time
+→ **1 design principle**: visible > correctable > complete > sophisticated (we call it honest-first)
+→ **1 test methodology** that runs in 5 seconds and catches what device testing misses
+→ **1 starter template**: drop [CLAUDE.md.template](./CLAUDE.md.template) into your next project on day one
 
-## What you get
-
-| | |
-|---|---|
-| **5 patterns** | recurred across feature areas in production |
-| **3 pitfalls** | with symptom, fix, and the test that catches the class next time |
-| **1 testing methodology** | runs in 5 seconds, catches bugs most teams find by deploying |
-| **1 design principle** | for any product that maintains state about its users |
-| **1 starter template** | drop [CLAUDE.md.template](./CLAUDE.md.template) into your next project on day one |
-
-The principle in one line: **visible > correctable > complete > sophisticated**. We call it honest-first design. The full argument lives in [PRINCIPLES.md](./PRINCIPLES.md).
+Free. MIT-licensed. Ready to copy. Full argument for the principle lives in [PRINCIPLES.md](./PRINCIPLES.md).
 
 ---
 
